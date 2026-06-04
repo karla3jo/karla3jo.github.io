@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karla Trejo | Portfolio & CV</title>
+    <title>Karla Trejo, PhD | AI & Robotics Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -61,7 +61,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .nav-links a {
@@ -69,6 +69,7 @@
             text-decoration: none;
             transition: color 0.3s;
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -87,14 +88,14 @@
 
         .hero-container {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 1fr 2.5fr;
             gap: 4rem;
             align-items: center;
         }
 
         .profile-img {
             width: 100%;
-            max-width: 300px;
+            max-width: 260px;
             border-radius: 20px;
             border: 4px solid var(--primary-color);
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
@@ -103,7 +104,7 @@
         .hero-text h1 {
             font-size: 3.5rem;
             line-height: 1.2;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .hero-text h2 {
@@ -121,7 +122,7 @@
 
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
             margin-bottom: 2rem;
         }
@@ -131,6 +132,7 @@
             align-items: center;
             gap: 0.75rem;
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         .contact-item i {
@@ -176,13 +178,13 @@
         section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .section-title {
             font-size: 2.2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             position: relative;
             display: inline-block;
         }
@@ -202,7 +204,7 @@
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .card {
@@ -228,7 +230,7 @@
         }
 
         .card-title h3 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--text-color);
         }
 
@@ -242,8 +244,9 @@
             color: var(--secondary-color);
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .card-body ul {
@@ -255,6 +258,7 @@
             position: relative;
             padding-left: 1.5rem;
             color: var(--text-muted);
+            font-size: 0.98rem;
         }
 
         .card-body li::before {
@@ -264,33 +268,52 @@
             color: var(--primary-color);
         }
 
+        .advisor-text {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
         /* Grid Layouts */
-        .grid-2 {
+        .grid-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .pub-card {
             display: flex;
-            gap: 1rem;
+            gap: 1.25rem;
             align-items: flex-start;
         }
 
         .pub-card i {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--primary-color);
             margin-top: 0.25rem;
+        }
+
+        .pub-details p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        .pub-details strong {
+            color: var(--primary-color);
+            display: inline-block;
+            margin-right: 0.5rem;
         }
 
         .award-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem;
+            padding: 1.2rem;
             background-color: var(--card-bg);
             border-radius: 8px;
             margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .award-info {
@@ -329,72 +352,84 @@
             .social-buttons {
                 justify-content: center;
             }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
             .nav-container {
                 flex-direction: column;
                 gap: 1rem;
+                padding: 1rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">Dr. Karla Trejo</div>
+            <div class="logo">Karla Trejo, PhD</div>
             <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#experiencia">Experiencia</a></li>
-                <li><a href="#educacion">Educación</a></li>
-                <li><a href="#publicaciones">Publicaciones</a></li>
-                <li><a href="#premios">Premios</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#internships">Internships</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#awards">Grants & Awards</a></li>
             </ul>
         </div>
     </nav>
 
-    <header id="inicio">
+    <!-- Hero Section -->
+    <header id="home">
         <div class="hero-container">
             <div>
+                <!-- Replace with your actual photo once uploaded to GitHub -->
                 <img src="https://via.placeholder.com/300x300/1e293b/38bdf8?text=Karla+Trejo" alt="Karla Trejo" class="profile-img">
             </div>
             <div class="hero-text">
                 <h1>Karla Trejo</h1>
                 <h2>Head of AI Innovation</h2>
-                <p>Líder de innovación especializada en Inteligencia Artificial Distribuida, Robótica y Visión por Computador. Apasionada por transferir la investigación científica avanzada a soluciones de impacto real en los sectores público y privado.</p>
+                <p>Innovation lead specialized in Artificial Intelligence. Dedicated to driving progress in the transfer of advanced scientific research into impactful technological solutions for both public and private sectors.</p>
                 
                 <div class="contact-info">
-                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Barcelona, Spain</div>
                     <div class="contact-item"><i class="fas fa-envelope"></i> karla.trejo@i2cat.net</div>
-                    <div class="contact-item"><i class="fas fa-phone"></i> (+34) 633 803 823</div>
+                    <div class="contact-item"><i class="fas fa-phone"></i> (+34) 625 887 240</div>
                 </div>
 
                 <div class="social-buttons">
-                    <a href="https://linkedin.com/in/karla-trejo-ai" target="_blank" class="btn btn-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="#experiencia" class="btn">Saber más <i class="fas fa-arrow-down"></i></a>
+                    <a href="https://linkedin.com/in/karla-trejo-ai" target="_blank" class="btn btn-primary"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+                    <a href="#experience" class="btn">Explore Experience <i class="fas fa-arrow-down"></i></a>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="experiencia">
-        <h2 class="section-title">Experiencia Profesional</h2>
+    <!-- Vocational Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Vocational Experience</h2>
         <div class="timeline">
             
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        <h3>Head of AI Innovation</h3>
-                        <div class="card-subtitle">i2CAT Foundation</div>
+                        <h3>Head of Innovation</h3>
+                        <div class="card-subtitle">i2CAT Research and Innovation Centre, Barcelona, Spain</div>
                     </div>
-                    <span class="date-badge">2024 - Presente</span>
+                    <span class="date-badge">2024 - Present</span>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>Líder de innovación del departamento de Inteligencia Artificial Distribuida (DAI), impulsando la transferencia de investigación a innovación en Trustworthy AI (TAI), Multimodal AI Perception (MAIP) y Distributed Data Architectures (DDA).</li>
-                        <li>Enlace principal con las unidades de desarrollo de negocio de i2CAT, definiendo estrategias de IA e identificando iniciativas público-privadas.</li>
-                        <li>Gestora de innovación en IA dentro del CIDAI, alineada con la Estrategia de IA de Cataluña (CATALONIA.AI).</li>
+                        <li>Innovation lead of the Distributed Artificial Intelligence (DAI) research group, responsible for translating research into market innovation across the Resilient AI, Multimodal AI at the Edge-Cloud Continuum, Efficient AI at the Edge and Data & AI Architectures lines.</li>
+                        <li>Main liaison with i2CAT's business development units, defining AI strategies and identifying initiatives to foster partnerships with the public and private sectors across the Catalan territory.</li>
+                        <li> i2CAT's representative and AI Innovation Manager within the Centre of Innovation for Data Tech and Artificial Intelligence (CIDAI), contributing to strategic initiatives and delivering impactful projects that support the objectives of Catalonia's AI Strategy.</li>
                     </ul>
                 </div>
             </div>
@@ -403,16 +438,16 @@
                 <div class="card-header">
                     <div class="card-title">
                         <h3>AI/ML Expert</h3>
-                        <div class="card-subtitle">Unblur</div>
+                        <div class="card-subtitle">Unblur, Barcelona, Spain</div>
                     </div>
                     <span class="date-badge">2020 - 2023</span>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>Liderazgo de I+D en IA para mejorar las capacidades de la plataforma IRIS para servicios de emergencia mediante enfoques de ML (NLP, CRFs, GMMs, reconocimiento de locutores).</li>
-                        <li>Responsable de la arquitectura y despliegue de prototipos de IA en producción.</li>
-                        <li>Coordinadora principal del proyecto conjunto Unblur-i2CAT y del proyecto europeo EIC Accelerator "IRIS".</li>
-                        <li>Representante del consejo asesor para la comunidad de IA en la Digital Catalonia Alliance (DCA).</li>
+                        <li>Lead of AI research and development to enhance and further improve the functionalities and capabilities offered by the IRIS platform for first responders through ML and DL approaches.</li>
+                        <li>Responsible for the architecture and deployment of AI prototypes into production environments.</li>
+                        <li>Technical AI lead in the project "IRIS: AI-based assistant for front-line emergency management", funded by the European Innovation Council (EIC) Accelerator.</li>
+                        <li>Representative of the advisory board for the AI community in the Digital Catalonia Alliance (DCA).</li>
                     </ul>
                 </div>
             </div>
@@ -421,13 +456,58 @@
                 <div class="card-header">
                     <div class="card-title">
                         <h3>AI Software Developer & Data Scientist</h3>
-                        <div class="card-subtitle">KLB Group</div>
+                        <div class="card-subtitle">KLB Group, Sant Cugat, Barcelona, Spain</div>
                     </div>
                     <span class="date-badge">2019 - 2020</span>
                 </div>
                 <div class="card-body">
                     <ul>
-                        <li>Desarrollo del software AIIR (AI Invoice Recognition): evaluación de clasificadores NLP (TF-IDF), mejora de modelos ANN (MLP), implementación de MySQL y despliegue de REST API seguras (Flask-JWT).</li>
+                        <li>AI Invoice Recognition software (AIIR) for automatic invoice analysis through NLP techniques.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>R&D Engineer</h3>
+                        <div class="card-subtitle">IIIA-KLB Group collaboration, Bellaterra, Barcelona, Spain</div>
+                    </div>
+                    <span class="date-badge">2018 (6 months)</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>AI4Fin project: Comparative studies of AI techniques for validation of financial invoices and bills.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>External Collaborator for Computer Vision tasks</h3>
+                        <div class="card-subtitle">Transcoma Grupo Empresarial S.L., Barcelona, Spain</div>
+                    </div>
+                    <span class="date-badge">2017 (1-week commission)</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Image pre-processing, OCR implementation and layout design for invoices digitalization.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>Embedded Systems Developer</h3>
+                        <div class="card-subtitle">Zona Zero S.A. de C.V., Colima, Mexico</div>
+                    </div>
+                    <span class="date-badge">2011 - 2012</span>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Micro-controller programming and electronics technician in R&D department.</li>
                     </ul>
                 </div>
             </div>
@@ -435,20 +515,70 @@
         </div>
     </section>
 
-    <section id="educacion">
-        <h2 class="section-title">Educación e Investigación</h2>
+    <!-- Internships Section -->
+    <section id="internships">
+        <h2 class="section-title">Internships</h2>
+        <div class="timeline">
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>Institut d'Investigació en Intel·ligència Artificial (IIIA-CSIC)</h3>
+                        <div class="card-subtitle">Unitat de Desenvolupament Tecnològic en Intel·ligència Artificial (UDT), Bellaterra, Spain</div>
+                    </div>
+                    <span class="date-badge">2018</span>
+                </div>
+                <div class="card-body">
+                    <p style="color: var(--text-muted)">Thesis writing while working and receiving valuable guidance from experienced colleagues.</p>
+                    <div class="advisor-text">Advisors: Dr. Pere García i Calvés and Dr. Josep Puyol-Gruart</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>National Institute of Informatics (NII)</h3>
+                        <div class="card-subtitle">Digital Content and Media Sciences Research Division, Tokyo, Japan</div>
+                    </div>
+                    <span class="date-badge">2016</span>
+                </div>
+                <div class="card-body">
+                    <p style="color: var(--text-muted)">Content-based image and video analysis: 3D video analysis (obtained by Kinect) for human action recognition. Development of "Group Leader Detection and Tracking" algorithm.</p>
+                    <div class="advisor-text">Advisor: Dr. Shin'ichi Satoh</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>PAL Robotics</h3>
+                        <div class="card-subtitle">Barcelona, Spain</div>
+                    </div>
+                    <span class="date-badge">2014</span>
+                </div>
+                <div class="card-body">
+                    <p style="color: var(--text-muted)">Software development regarding people recognition and tracking to compete in RoCKIn@Home 2014 challenge using ROS and REEM robot.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
         <div class="timeline">
             
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
                         <h3>PhD in Automatic Control, Robotics and Computer Vision</h3>
-                        <div class="card-subtitle">Universitat Politècnica de Catalunya (IDEAI-UPC)</div>
+                        <div class="card-subtitle">Universitat Politècnica de Catalunya, Intelligent Data Science and Artificial Intelligence Research Center (IDEAI-UPC), Spain</div>
                     </div>
                     <span class="date-badge">2014 - 2020</span>
                 </div>
                 <div class="card-body">
-                    <p style="color: var(--text-muted)">Director de Tesis: Dr. Cecilio Angulo Bahón. Enfoque en Inteligencia Científica de Datos y Visión Avanzada.</p>
+                    <div class="advisor-text">Advisor: Dr. Cecilio Angulo Bahón</div>
                 </div>
             </div>
 
@@ -456,71 +586,86 @@
                 <div class="card-header">
                     <div class="card-title">
                         <h3>MSc in Automatic Control and Robotics</h3>
-                        <div class="card-subtitle">Universitat Politècnica de Catalunya</div>
+                        <div class="card-subtitle">Universitat Politècnica de Catalunya, UPC-Barcelona Tech, Spain</div>
                     </div>
                     <span class="date-badge">2012 - 2014</span>
                 </div>
                 <div class="card-body">
-                    <p style="color: var(--text-muted)">Impartido íntegramente en inglés. Especialización en sistemas autónomos y control automatizado.</p>
+                    <p style="color: var(--text-muted)">Language of instruction: English</p>
+                    <div class="advisor-text">Advisor: Dr. Cecilio Angulo Bahón</div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        <h3>Ingeniería en Mecatrónica</h3>
-                        <div class="card-subtitle">Instituto Tecnológico de Colima (México)</div>
+                        <h3>Mechatronics Engineer</h3>
+                        <div class="card-subtitle">Instituto Tecnológico de Colima, Colima, Mexico</div>
                     </div>
                     <span class="date-badge">2006 - 2011</span>
                 </div>
                 <div class="card-body">
-                    <p style="color: var(--text-muted)">Especialidad en Diseño de Sistemas y Automatización.</p>
+                    <p style="color: var(--text-muted)">Major in System Design and Automation.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section id="publicaciones">
-        <h2 class="section-title">Publicaciones Destacadas</h2>
-        <div class="grid-2">
+    <!-- Publications Section -->
+    <section id="publications">
+        <h2 class="section-title">Publications</h2>
+        <div class="grid-layout">
             
             <div class="card pub-card">
                 <i class="fas fa-file-alt"></i>
-                <div>
-                    <strong style="color: var(--primary-color)">2019</strong>
-                    <p><em>Metadata Generation for Multi-Text Classification in Structured Data.</em> Trejo K., García P., Puyol-Gruart J. Frontiers in Artificial Intelligence and Applications.</p>
+                <div class="pub-details">
+                    <p><strong>2019</strong> Karla Trejo, Pere García and Josep Puyol-Gruart. <em>Metadata Generation for Multi-Text Classification in Structured Data.</em> In Artificial Intelligence Research and Development. Proceedings of the 22nd International Conference of the Catalan Association for Artificial Intelligence, volume 319 of Frontiers in Artificial Intelligence and Applications, pages 417-421, 2019.</p>
                 </div>
             </div>
 
             <div class="card pub-card">
                 <i class="fas fa-journal-whills"></i>
-                <div>
-                    <strong style="color: var(--primary-color)">2018</strong>
-                    <p><em>Towards robots reasoning about group behavior of museum visitors: Leader detection and group tracking.</em> Journal of Ambient Intelligence and Smart Environments.</p>
+                <div class="pub-details">
+                    <p><strong>2018</strong> Karla Trejo, Cecilio Angulo, Shin'ichi Satoh and Mayumi Bono. <em>Towards robots reasoning about group behavior of museum visitors: Leader detection and group tracking.</em> Journal of Ambient Intelligence and Smart Environments, volume 10, pages 3-19, 2018.</p>
                 </div>
             </div>
 
             <div class="card pub-card">
                 <i class="fas fa-file-alt"></i>
-                <div>
-                    <strong style="color: var(--primary-color)">2016</strong>
-                    <p><em>Single-Camera Automatic Landmarking for People Recognition with an Ensemble of Regression Trees.</em> Computación y Sistemas.</p>
+                <div class="pub-details">
+                    <p><strong>2016</strong> Karla Trejo, Cecilio Angulo and Juan Manuel Acevedo-Valle. <em>Body Contours AAM in Single Camera: Automatic Landmarking for People Recognition.</em> In Innovation Match MX 2015-2016: 1er Foro Internacional de Talento Mexicano. Memorias de ponencias IMMX, pages 1-8, 2016.</p>
+                </div>
+            </div>
+
+            <div class="card pub-card">
+                <i class="fas fa-file-alt"></i>
+                <div class="pub-details">
+                    <p><strong>2016</strong> Karla Trejo and Cecilio Angulo. <em>Single-Camera Automatic Landmarking for People Recognition with an Ensemble of Regression Trees.</em> Computación y Sistemas. Thematic issue: Topic Trends in Computing Research, volume 20, pages 19-28, 2016.</p>
+                </div>
+            </div>
+
+            <div class="card pub-card">
+                <i class="fas fa-file-alt"></i>
+                <div class="pub-details">
+                    <p><strong>2015</strong> Karla Trejo, Cecilio Angulo and Juan Carlos Aguado. <em>Body Contours AAM in Single Camera: Automatic Landmarking for People Recognition.</em> In Artificial Intelligence Research and Development. Proceedings of the 18th International Conference of the Catalan Association for Artificial Intelligence, volume 277 of Frontiers in Artificial Intelligence and Applications, pages 279-282, 2015.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section id="premios">
-        <h2 class="section-title">Premios y Becas</h2>
+    <!-- Grants & Awards Section -->
+    <section id="awards">
+        <h2 class="section-title">Grants & Awards</h2>
         <div>
+            
             <div class="award-item">
                 <div class="award-info">
-                    <i class="fas fa-trophy"></i>
+                    <i class="fas fa-award"></i>
                     <div>
-                        <strong>Best Poster Award</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">CCIA 2015 - Sponsor: ACIA (Valencia, Spain)</p>
+                        <strong>MOU Grant, 2nd Call of 2015 NII International Internship Program</strong>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">PhD Fellowship. Sponsor: National Institute of Informatics (NII) — Tokyo, Japan</p>
                     </div>
                 </div>
                 <span class="date-badge">2015</span>
@@ -528,10 +673,10 @@
 
             <div class="award-item">
                 <div class="award-info">
-                    <i class="fas fa-award"></i>
+                    <i class="fas fa-trophy"></i>
                     <div>
-                        <strong>MOU Grant - PhD Fellowship</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">National Institute of Informatics (NII) (Tokyo, Japan)</p>
+                        <strong>Best Poster Award</strong>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">18th International Conference of the Catalan Association for Artificial Intelligence, CCIA 2015. Sponsor: ACIA — Valencia, Spain</p>
                     </div>
                 </div>
                 <span class="date-badge">2015</span>
@@ -541,19 +686,33 @@
                 <div class="award-info">
                     <i class="fas fa-graduation-cap"></i>
                     <div>
-                        <strong>Beca para Estudios de Posgrado Internacional (PhD y MSc)</strong>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Sponsor: CONACYT, México</p>
+                        <strong>International Postgraduate Studentship (PhD Degree)</strong>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Sponsor: CONACYT (National Council of Science and Technology, Mexico) — Barcelona, Spain</p>
                     </div>
                 </div>
-                <span class="date-badge">2012 / 2014</span>
+                <span class="date-badge">2014</span>
             </div>
+
+            <div class="award-item">
+                <div class="award-info">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div>
+                        <strong>International Postgraduate Studentship (MSc Degree)</strong>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Sponsor: CONACYT (National Council of Science and Technology, Mexico) — Barcelona, Spain</p>
+                    </div>
+                </div>
+                <span class="date-badge">2012</span>
+            </div>
+
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Dr. Karla Trejo. Creado para Web Portfolio personal.</p>
+        <p>&copy; 2026 Karla Trejo, PhD. Built as a Personal Web Portfolio.</p>
     </footer>
 
+    <!-- Smooth Navigation Highlight JavaScript -->
     <script>
         const sections = document.querySelectorAll('section, header');
         const navLi = document.querySelectorAll('.nav-links a');
