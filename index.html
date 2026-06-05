@@ -159,7 +159,9 @@
         }
 
         .btn:hover {
-            border-color: var(--primary-color);
+            border-color: var(--hover-color) !important;
+            background-color: rgba(255, 255, 255, 0.02);
+            box-shadow: 0 0 15px var(--shadow-color);
             transform: translateY(-2px);
         }
 
@@ -400,10 +402,20 @@
                 <p>Innovation lead specialized in Artificial Intelligence. Dedicated to driving progress in the transfer of advanced scientific research into impactful technological solutions for both public and private sectors.</p>
 
                 <div class="social-buttons">
-                    <a href="https://linkedin.com/in/karla-trejo-ai" target="_blank" class="btn btn-primary"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
-                    <a href="#experience" class="btn">Explore Experience <i class="fas fa-arrow-down"></i></a>
-                    <a href="mailto:karla.3jo@gmail.com" class="btn"><i class="fas fa-envelope"></i> Email Me</a>
-                    <a href="https://orcid.org/0000-0003-3976-1889" target="_blank" class="btn" style="border-color: #a6ce39;"><i class="fab fa-orcid" style="color: #a6ce39;"></i> ORCID iD</a>
+                    <!-- LinkedIn Button -->
+                    <a href="https://linkedin.com/in/karla-trejo-ai" target="_blank" class="btn" style="border-color: #0077b5; --hover-color: #0077b5; --shadow-color: rgba(0, 119, 181, 0.3);">
+                        <i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn
+                    </a>
+                    
+                    <!-- Email Button -->
+                    <a href="mailto:karla.3jo@gmail.com" class="btn" style="border-color: var(--primary-color); --hover-color: var(--primary-color); --shadow-color: rgba(56, 189, 248, 0.3);">
+                        <i class="fas fa-envelope" style="color: var(--primary-color);"></i> Email
+                    </a>
+                    
+                    <!-- ORCID iD Button -->
+                    <a href="https://orcid.org/0000-0002-3670-3490" target="_blank" class="btn" style="border-color: #a6ce39; --hover-color: #a6ce39; --shadow-color: rgba(166, 206, 57, 0.3);">
+                        <i class="fab fa-orcid" style="color: #a6ce39;"></i> ORCID iD
+                    </a>
                 </div>
             </div>
         </div>
@@ -470,7 +482,7 @@
                         <h3>R&D Engineer</h3>
                         <div class="card-subtitle">IIIA-KLB Group collaboration, Bellaterra, Barcelona, Spain</div>
                     </div>
-                    <span class="date-badge">2018 (6 months)</span>
+                    <span class="date-badge">2018</span>
                 </div>
                 <div class="card-body">
                     <ul>
@@ -485,7 +497,7 @@
                         <h3>External Collaborator for Computer Vision tasks</h3>
                         <div class="card-subtitle">Transcoma Grupo Empresarial S.L., Barcelona, Spain</div>
                     </div>
-                    <span class="date-badge">2017 (1-week commission)</span>
+                    <span class="date-badge">2017</span>
                 </div>
                 <div class="card-body">
                     <ul>
@@ -667,7 +679,7 @@
                             Collection "Intelligent Systems for Sustainable and Inclusive Futures"
                         </p>
                         <p style="color: var(--text-muted); font-size: 0.9rem;">
-                            International Journal of Computational Intelligence Systems (Q1). Springer Nature.
+                            International Journal of Computational Intelligence Systems (Q1). — Springer Nature.
                         </p>
                     </div>
                 </div>
@@ -677,7 +689,8 @@
             <!-- 2025 Scientific Programme Chair -->
             <div class="award-item" style="align-items: flex-start;">
                 <div class="award-info">
-                    <i class="fas fa-podium" style="color: var(--primary-color); margin-top: 0.25rem;"></i>
+                    <!-- Icono corregido a 'fa-users' para asegurar su visualización gratuita -->
+                    <i class="fas fa-users" style="color: var(--primary-color); margin-top: 0.25rem;"></i>
                     <div>
                         <strong>Scientific Programme Chair</strong>
                         <p style="color: var(--text-color); font-weight: 500; margin-top: 0.25rem;">
