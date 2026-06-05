@@ -370,6 +370,46 @@
                 gap: 0.5rem;
             }
         }
+
+        .clean-logo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .clean-logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: default;
+        }
+
+        .clean-logo-item i {
+            font-size: 2.2rem;
+            color: rgba(255, 255, 255, 0.2); 
+        }
+
+        .clean-logo-item span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.35);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .clean-logo-item img {
+            max-height: 35px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.35;
+        }
+
+        @media (max-width: 768px) {
+            .clean-logo-grid { gap: 2.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -420,6 +460,40 @@
             </div>
         </div>
     </header>
+
+    <!-- Key Project Clients Section (Option 1 - Press Style) -->
+    <section id="collaborations" style="padding: 4rem 2rem; background-color: rgba(30, 41, 59, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h3 style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 3rem; font-weight: 600;">
+                Key Clients & Collaborators (i2CAT Innovation Projects)
+            </h3>
+            <div class="clean-logo-grid">
+                <!-- 3CAT -->
+                <div class="clean-logo-item">
+                    <img src="logo-3cat.png" alt="3CAT">
+                    <span>3CAT</span>
+                </div>
+                
+                <!-- SIMON -->
+                <div class="clean-logo-item">
+                    <img src="logo-simon.png" alt="SIMON">
+                    <span>SIMON</span>
+                </div>
+
+                <!-- Anglatècnic -->
+                <div class="clean-logo-item">
+                    <img src="logo-anglatecnic.png" alt="Anglatècnic">
+                    <span>Anglatècnic</span>
+                </div>
+
+                <!-- Neàpolis -->
+                <div class="clean-logo-item">
+                    <img src="logo-neapolis.svg" alt="Neàpolis">
+                    <span>Neàpolis</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Vocational Experience Section -->
     <section id="experience">
