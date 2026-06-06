@@ -340,15 +340,23 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Responsive Design */
+        /* Responsive Design Corrected */
         @media (max-width: 968px) {
+            header {
+                padding-top: 10rem !important; /* Añade espacio para que el menú de arriba no tape tu nombre */
+            }
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 2rem;
             }
             .profile-img {
-                margin: 0 auto;
+                display: block;
+                margin: 0 auto !important; /* Fuerza el centrado horizontal matemático perfecto */
+                width: 200px !important; /* Un tamaño un poco más compacto y estético para móviles */
+                height: 200px !important; /* Lo hacemos completamente cuadrado */
+                object-fit: contain !important; /* Evita que la foto se recorte por arriba o por los lados */
+                object-position: center !important;
             }
             .contact-info {
                 justify-content: center;
@@ -370,6 +378,9 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.5rem;
+            }
+            .clean-logo-grid {
+                gap: 2.5rem;
             }
         }
     </style>
