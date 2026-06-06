@@ -340,28 +340,47 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Responsive Design Corrected */
+        /* Responsive Design Corrected & Anti-Overflow */
         @media (max-width: 968px) {
+            html, body {
+                overflow-x: hidden; /* Corta radicalmente cualquier elemento que intente salirse por la derecha */
+                width: 100%;
+            }
             header {
-                padding-top: 10rem !important; /* Añade espacio para que el menú de arriba no tape tu nombre */
+                padding-top: 10rem !important; 
+                width: 100% !important;
+                overflow: hidden;
             }
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 2rem;
+                width: 100% !important;
+                padding: 0 1rem; /* Margen interno de seguridad para el texto en pantallas pequeñas */
             }
             .profile-img {
                 display: block;
-                margin: 0 auto !important; /* Fuerza el centrado horizontal matemático perfecto */
-                width: 200px !important; /* Un tamaño un poco más compacto y estético para móviles */
-                height: 200px !important; /* Lo hacemos completamente cuadrado */
-                object-fit: contain !important; /* Evita que la foto se recorte por arriba o por los lados */
+                margin: 0 auto !important; 
+                width: 200px !important; 
+                height: 200px !important; 
+                object-fit: contain !important; 
                 object-position: center !important;
             }
             .contact-info {
                 justify-content: center;
+                width: 100%;
             }
             .social-buttons {
+                justify-content: center;
+                display: flex;
+                flex-direction: column; /* En móviles ponemos los botones uno debajo de otro para que no se empujen */
+                align-items: center;
+                gap: 1rem;
+                width: 100%;
+            }
+            .social-buttons .btn {
+                width: 100%; /* El botón ocupa el ancho del móvil de forma estética */
+                max-width: 280px; /* Evita que en pantallas medianas el botón sea gigante */
                 justify-content: center;
             }
             .nav-container {
