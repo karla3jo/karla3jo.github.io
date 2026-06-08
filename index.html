@@ -220,9 +220,10 @@
             transition: transform 0.3s, border-color 0.3s;
         }
 
-        .card:hover {
+        .card:hover:not(div) {
             transform: translateY(-4px);
             border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
         }
 
         .card-header {
@@ -612,7 +613,7 @@
         <h2 class="section-title">Education</h2>
         <div class="timeline">
             
-            <div class="card">
+            <a href="https://upcommons.upc.edu/entities/publication/123c6545-4039-4880-9760-f31190339b87" target="_blank" class="card" style="text-decoration: none; cursor: pointer; display: block;">
                 <div class="card-header">
                     <div class="card-title">
                         <h3>PhD in Automatic Control, Robotics and Computer Vision</h3>
@@ -623,9 +624,9 @@
                 <div class="card-body">
                     <div class="advisor-text">Advisor: Dr. Cecilio Angulo Bahón</div>
                 </div>
-            </div>
+            </a>
 
-            <div class="card">
+            <a href="https://upcommons.upc.edu/entities/publication/dfaf8603-521b-4571-ab08-81a0dd32744d" target="_blank" class="card" style="text-decoration: none; cursor: pointer; display: block;">
                 <div class="card-header">
                     <div class="card-title">
                         <h3>MSc in Automatic Control and Robotics</h3>
@@ -637,7 +638,7 @@
                     <p style="color: var(--text-muted)">Language of instruction: English</p>
                     <div class="advisor-text">Advisor: Dr. Cecilio Angulo Bahón</div>
                 </div>
-            </div>
+            </a>
 
             <div class="card">
                 <div class="card-header">
@@ -659,6 +660,13 @@
     <section id="publications">
         <h2 class="section-title">Featured Publications</h2>
         <div class="grid-layout">
+            
+            <a href="https://link.springer.com/article/10.1007/s44196-025-00994-2" target="_blank" class="card pub-card" style="text-decoration: none; cursor: pointer;">
+                <i class="fas fa-file-alt"></i>
+                <div class="pub-details">
+                    <p><strong>2025</strong> Sergi Mercadé, Miquel Tarzan, Daniel Alzueta, Karla Trejo, Josep Escrig, Sergi Serra and Rizkallah Touma. <em>IRIS-AI: An AI-Based Resource Recommender for Emergency Decision Support Systems of Fire Departments.</em> International Journal of Computational Intelligence Systems, volume 18, article number 280, 2025.</p>
+                </div>
+            </a>
             
             <a href="https://ebooks.iospress.nl/publication/52867" target="_blank" class="card pub-card" style="text-decoration: none; cursor: pointer;">
                 <i class="fas fa-file-alt"></i>
@@ -697,7 +705,7 @@
         <div>
             
             <!-- 2026 Guest Editor -->
-            <div class="award-item" style="align-items: flex-start;">
+            <a href="https://link.springer.com/collections/dabeebgdjc" target="_blank" class="award-item" style="align-items: flex-start; text-decoration: none; display: flex;">
                 <div class="award-info">
                     <i class="fas fa-book-open" style="color: var(--primary-color); margin-top: 0.25rem;"></i>
                     <div>
@@ -711,10 +719,10 @@
                     </div>
                 </div>
                 <span class="date-badge">2026</span>
-            </div>
+            </a>
 
             <!-- 2025 Scientific Programme Chair -->
-            <div class="award-item" style="align-items: flex-start;">
+            <a href="https://acia.cat/congress-ccia/ccia-2025-edicio-27/" target="_blank" class="award-item" style="align-items: flex-start; text-decoration: none; display: flex;">
                 <div class="award-info">
                     <!-- Icono corregido a 'fa-users' para asegurar su visualización gratuita -->
                     <i class="fas fa-users" style="color: var(--primary-color); margin-top: 0.25rem;"></i>
@@ -729,7 +737,7 @@
                     </div>
                 </div>
                 <span class="date-badge">2025</span>
-            </div>
+            </a>
 
             <!-- 2024 Thesis Examination Committee -->
             <div class="award-item" style="align-items: flex-start;">
