@@ -405,20 +405,6 @@
                 gap: 2.5rem;
             }
         }
-        /* --- Recognition Section Smart Interaction --- */
-        /* Solo reaccionan las tarjetas de reconocimiento que NO sean un simple div */
-        .award-item:hover:not(div) {
-            border-color: rgba(56, 189, 248, 0.3) !important;
-            background-color: rgba(255, 255, 255, 0.02);
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
-            transform: translateY(-2px);
-            cursor: pointer;
-        }
-
-        /* Las tarjetas estáticas de reconocimiento conservan el cursor por defecto */
-        div.award-item {
-            cursor: default !important;
-        }
     </style>
 </head>
 <body>
@@ -719,7 +705,7 @@
         <div>
             
             <!-- 2026 Guest Editor -->
-            <a href="https://link.springer.com/collections/dabeebgdjc" target="_blank" class="award-item" style="align-items: flex-start; text-decoration: none; display: flex;">
+            <a href="https://link.springer.com/collections/dabeebgdjc" target="_blank" class="award-item" style="align-items: flex-start;">
                 <div class="award-info">
                     <i class="fas fa-book-open" style="color: var(--primary-color); margin-top: 0.25rem;"></i>
                     <div>
@@ -738,7 +724,6 @@
             <!-- 2025 Scientific Programme Chair -->
             <a href="https://acia.cat/congress-ccia/ccia-2025-edicio-27/" target="_blank" class="award-item" style="align-items: flex-start; text-decoration: none; display: flex;">
                 <div class="award-info">
-                    <!-- Icono corregido a 'fa-users' para asegurar su visualización gratuita -->
                     <i class="fas fa-users" style="color: var(--primary-color); margin-top: 0.25rem;"></i>
                     <div>
                         <strong>Scientific Programme Chair</strong>
