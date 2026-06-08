@@ -405,6 +405,20 @@
                 gap: 2.5rem;
             }
         }
+        /* --- Recognition Section Smart Interaction --- */
+        /* Solo reaccionan las tarjetas de reconocimiento que NO sean un simple div */
+        .award-item:hover:not(div) {
+            border-color: rgba(56, 189, 248, 0.3) !important;
+            background-color: rgba(255, 255, 255, 0.02);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        /* Las tarjetas estáticas de reconocimiento conservan el cursor por defecto */
+        div.award-item {
+            cursor: default !important;
+        }
     </style>
 </head>
 <body>
