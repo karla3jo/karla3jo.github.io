@@ -1104,47 +1104,52 @@
 
     <!-- Carrousel Arrows Click JavaScript -->
     <script>
-        // 1. Navegación manual por botones (Escritorio / Flechas)
-        function scrollCarousel(direction) {
-            const carousel = document.getElementById('talksCarousel');
-            const scrollAmount = 400; // Ancho de tarjeta + gap
-            const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-
-            if (direction === 1) {
-                if (carousel.scrollLeft >= maxScrollLeft - 15) {
-                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }
-            } else if (direction === -1) {
-                if (carousel.scrollLeft <= 15) {
-                    carousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
-                } else {
-                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                }
-            }
-        }
-
-        // 2. Detección continua de Swipe Táctil (Móvil)
         const talksCarousel = document.getElementById('talksCarousel');
+        let isButtonScrolling = false;
         let isAdjusting = false;
 
+        // 1. Navegación manual por botones (Flechas en Escritorio)
+        function scrollCarousel(direction) {
+            const scrollAmount = 400; // 380px tarjeta + gap
+            const maxScrollLeft = talksCarousel.scrollWidth - talksCarousel.clientWidth;
+
+            // Bloqueamos temporalmente el evento táctil para que no interfiera en la animación
+            isButtonScrolling = true;
+
+            if (direction === 1) {
+                if (talksCarousel.scrollLeft >= maxScrollLeft - 15) {
+                    talksCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    talksCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            } else if (direction === -1) {
+                if (talksCarousel.scrollLeft <= 15) {
+                    talksCarousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+                } else {
+                    talksCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                }
+            }
+
+            // Volvemos a activar la detección tras finalizar la transición suave
+            setTimeout(() => {
+                isButtonScrolling = false;
+            }, 600);
+        }
+
+        // 2. Detección de Swipe Táctil (Móvil)
         talksCarousel.addEventListener('scroll', () => {
-            if (isAdjusting) return;
+            // Si el scroll lo originó una flecha o ya se está ajustando, no hacemos nada
+            if (isButtonScrolling || isAdjusting) return;
 
             const maxScroll = talksCarousel.scrollWidth - talksCarousel.clientWidth;
 
-            // Si el usuario llega al final arrastrando con el dedo en el móvil
+            // Bucle infinito solo cuando se arrastra con el dedo en móviles
             if (talksCarousel.scrollLeft >= maxScroll - 5) {
                 isAdjusting = true;
                 setTimeout(() => {
                     talksCarousel.scrollTo({ left: 0, behavior: 'smooth' });
                     isAdjusting = false;
                 }, 300);
-            } 
-            // Si arrastra hacia la izquierda desde la primera tarjeta
-            else if (talksCarousel.scrollLeft <= 0) {
-                // Mantiene el scroll natural al inicio
             }
         });
     </script>
