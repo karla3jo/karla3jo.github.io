@@ -1111,11 +1111,26 @@
     <script>
         function scrollCarousel(direction) {
             const carousel = document.getElementById('talksCarousel');
-            const scrollAmount = 340; // Desplaza el ancho de una tarjeta + el espacio
-            carousel.scrollBy({
-                left: direction * scrollAmount,
-                behavior: 'smooth'
-            });
+            const scrollAmount = 340; // Ancho de tarjeta + gap
+            
+            // Calculamos el límite máximo de desplazamiento horizontal
+            const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+
+            if (direction === 1) {
+                // Si estamos cerca del final y seguimos dando clic a la derecha
+                if (carousel.scrollLeft >= maxScrollLeft - 10) {
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' }); // Vuelve a la primera
+                } else {
+                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            } else if (direction === -1) {
+                // Si estamos al principio y damos clic a la izquierda
+                if (carousel.scrollLeft <= 10) {
+                    carousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' }); // Salta a la última
+                } else {
+                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                }
+            }
         }
     </script>
 </body>
