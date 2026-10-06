@@ -1056,6 +1056,25 @@
                     </div>
                 </a>
 
+                <!-- CLON BNEW 2026 -->
+                <a href="TU_LINK_AQUI" target="_blank" class="talk-card carousel-card" style="text-decoration: none; color: inherit;">
+                    <div class="talk-image-wrapper">
+                        <img src="bnew2026.jpg" alt="BNEW 2026">
+                    </div>
+                    <div class="talk-content">
+                        <span class="talk-badge">Roundtable Discussion</span>
+                        <h3 style="font-size: 1.05rem; color: var(--text-color); margin-bottom: 0.5rem; line-height: 1.3;">
+                            "Impulsando la ciencia con IA y tecnología en la era de la inmediatez"
+                        </h3>
+                        <div class="talk-meta">
+                            <span><i class="fas fa-calendar-alt" style="color: var(--primary-color);"></i> 2026</span>
+                            <span><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> Barcelona, Spain</span>
+                            <span><i class="fas fa-clock" style="color: var(--primary-color);"></i> 45m</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0;">Barcelona New Economy Week (BNEW 2026)</p>
+                    </div>
+                </a>
+
             </div>
 
             <!-- Botón Derecha -->
@@ -1105,58 +1124,43 @@
     <!-- Carrousel Arrows Click JavaScript -->
     <script>
         const talksCarousel = document.getElementById('talksCarousel');
-        let isButtonScrolling = false;
-        let isAdjusting = false;
 
+        // 1. Navegación por flechas (Escritorio)
         function scrollCarousel(direction) {
-            const scrollAmount = 400; // 380px tarjeta + gap
-            const maxScrollLeft = talksCarousel.scrollWidth - talksCarousel.clientWidth;
-
-            isButtonScrolling = true;
+            const cardWidth = 400; // Ancho tarjeta (380px) + gap (20px)
+            const maxScroll = talksCarousel.scrollWidth - talksCarousel.clientWidth;
 
             if (direction === 1) {
-                // AVANZAR A LA DERECHA
-                if (talksCarousel.scrollLeft >= maxScrollLeft - 20) {
-                    // Salto del final al inicio: deshabilitamos snap un instante
-                    talksCarousel.style.scrollSnapType = 'none';
-                    talksCarousel.scrollTo({ left: 0, behavior: 'smooth' });
-                    setTimeout(() => {
-                        talksCarousel.style.scrollSnapType = 'x mandatory';
-                    }, 500);
+                // Si estamos cerca del clon al final, hacemos reset invisible a la primera
+                if (talksCarousel.scrollLeft >= maxScroll - 50) {
+                    talksCarousel.scrollTo({ left: 0, behavior: 'instant' });
+                    talksCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
                 } else {
-                    talksCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    talksCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
                 }
             } else if (direction === -1) {
-                // RETROCEDER A LA IZQUIERDA
-                if (talksCarousel.scrollLeft <= 20) {
-                    // Salto del inicio al final: deshabilitamos snap para evitar el "atrapado"
-                    talksCarousel.style.scrollSnapType = 'none';
-                    talksCarousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
-                    setTimeout(() => {
-                        talksCarousel.style.scrollSnapType = 'x mandatory';
-                    }, 500);
+                // Si estamos al principio y pulsamos izquierda, saltamos a la última real
+                if (talksCarousel.scrollLeft <= 10) {
+                    talksCarousel.scrollTo({ left: maxScroll - cardWidth, behavior: 'instant' });
                 } else {
-                    talksCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    talksCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
                 }
             }
-
-            setTimeout(() => {
-                isButtonScrolling = false;
-            }, 600);
         }
 
-        // Detección de Swipe Táctil (Móvil)
+        // 2. Detección continua de Swipe Táctil (Móvil)
+        let isResetting = false;
         talksCarousel.addEventListener('scroll', () => {
-            if (isButtonScrolling || isAdjusting) return;
+            if (isResetting) return;
 
             const maxScroll = talksCarousel.scrollWidth - talksCarousel.clientWidth;
 
+            // Si el usuario en móvil arrastra hasta el clon (final del scroll)
             if (talksCarousel.scrollLeft >= maxScroll - 5) {
-                isAdjusting = true;
-                setTimeout(() => {
-                    talksCarousel.scrollTo({ left: 0, behavior: 'smooth' });
-                    isAdjusting = false;
-                }, 300);
+                isResetting = true;
+                // Salto instantáneo e invisible al inicio sin romper el gesto táctil
+                talksCarousel.scrollTo({ left: 0, behavior: 'instant' });
+                setTimeout(() => { isResetting = false; }, 50);
             }
         });
     </script>
