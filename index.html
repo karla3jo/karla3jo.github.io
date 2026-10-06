@@ -516,6 +516,7 @@
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#recognition">Recognition</a></li>
                 <li><a href="#awards">Grants & Awards</a></li>
+                <li><a href="#talks">Talks & Media</a></li>
             </ul>
         </div>
     </nav>
@@ -1088,29 +1089,49 @@
 
     <!-- Carrousel Arrows Click JavaScript -->
     <script>
+        // 1. Navegación manual por botones (Escritorio / Flechas)
         function scrollCarousel(direction) {
             const carousel = document.getElementById('talksCarousel');
             const scrollAmount = 340; // Ancho de tarjeta + gap
-            
-            // Calculamos el límite máximo de desplazamiento horizontal
             const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
 
             if (direction === 1) {
-                // Si estamos cerca del final y seguimos dando clic a la derecha
-                if (carousel.scrollLeft >= maxScrollLeft - 10) {
-                    carousel.scrollTo({ left: 0, behavior: 'smooth' }); // Vuelve a la primera
+                if (carousel.scrollLeft >= maxScrollLeft - 15) {
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
                     carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 }
             } else if (direction === -1) {
-                // Si estamos al principio y damos clic a la izquierda
-                if (carousel.scrollLeft <= 10) {
-                    carousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' }); // Salta a la última
+                if (carousel.scrollLeft <= 15) {
+                    carousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
                 } else {
                     carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 }
             }
         }
+
+        // 2. Detección continua de Swipe Táctil (Móvil)
+        const talksCarousel = document.getElementById('talksCarousel');
+        let isAdjusting = false;
+
+        talksCarousel.addEventListener('scroll', () => {
+            if (isAdjusting) return;
+
+            const maxScroll = talksCarousel.scrollWidth - talksCarousel.clientWidth;
+
+            // Si el usuario llega al final arrastrando con el dedo en el móvil
+            if (talksCarousel.scrollLeft >= maxScroll - 5) {
+                isAdjusting = true;
+                setTimeout(() => {
+                    talksCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+                    isAdjusting = false;
+                }, 300);
+            } 
+            // Si arrastra hacia la izquierda desde la primera tarjeta
+            else if (talksCarousel.scrollLeft <= 0) {
+                // Mantiene el scroll natural al inicio
+            }
+        });
     </script>
 </body>
 </html>
