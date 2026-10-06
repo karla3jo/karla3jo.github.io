@@ -1125,40 +1125,52 @@
     <script>
         const talksCarousel = document.getElementById('talksCarousel');
 
-        // 1. Navegación por flechas (Escritorio)
         function scrollCarousel(direction) {
-            const cardWidth = 400; // Ancho tarjeta (380px) + gap (20px)
+            const cards = Array.from(talksCarousel.querySelectorAll('.carousel-card'));
+            if (!cards.length) return;
+
+            // Ancho real de una tarjeta + el espacio (gap) entre ellas
+            const cardStyle = window.getComputedStyle(cards[0]);
+            const gap = parseFloat(window.getComputedStyle(talksCarousel).gap) || 24;
+            const cardStep = cards[0].offsetWidth + gap;
+
             const maxScroll = talksCarousel.scrollWidth - talksCarousel.clientWidth;
+            const currentScroll = talksCarousel.scrollLeft;
 
             if (direction === 1) {
-                // Si estamos cerca del clon al final, hacemos reset invisible a la primera
-                if (talksCarousel.scrollLeft >= maxScroll - 50) {
-                    talksCarousel.scrollTo({ left: 0, behavior: 'instant' });
-                    talksCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                // AVANZAR A LA DERECHA
+                if (currentScroll >= maxScroll - 15) {
+                    // Si ya estamos al final del todo, salto al inicio
+                    talksCarousel.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
-                    talksCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                    // Calcula el índice de la siguiente tarjeta alineada exactamente
+                    const nextIndex = Math.floor((currentScroll + 10) / cardStep) + 1;
+                    const targetScroll = Math.min(nextIndex * cardStep, maxScroll);
+                    talksCarousel.scrollTo({ left: targetScroll, behavior: 'smooth' });
                 }
             } else if (direction === -1) {
-                // Si estamos al principio y pulsamos izquierda, saltamos a la última real
-                if (talksCarousel.scrollLeft <= 10) {
-                    talksCarousel.scrollTo({ left: maxScroll - cardWidth, behavior: 'instant' });
+                // RETROCEDER A LA IZQUIERDA
+                if (currentScroll <= 15) {
+                    // Si estamos al inicio, salto al final del carrusel
+                    talksCarousel.scrollTo({ left: maxScroll, behavior: 'smooth' });
                 } else {
-                    talksCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+                    // Calcula el índice de la tarjeta previa alineada exactamente
+                    const prevIndex = Math.ceil((currentScroll - 10) / cardStep) - 1;
+                    const targetScroll = Math.max(prevIndex * cardStep, 0);
+                    talksCarousel.scrollTo({ left: targetScroll, behavior: 'smooth' });
                 }
             }
         }
 
-        // 2. Detección continua de Swipe Táctil (Móvil)
+        // Detección continua de Swipe Táctil (Móvil)
         let isResetting = false;
         talksCarousel.addEventListener('scroll', () => {
             if (isResetting) return;
 
             const maxScroll = talksCarousel.scrollWidth - talksCarousel.clientWidth;
 
-            // Si el usuario en móvil arrastra hasta el clon (final del scroll)
             if (talksCarousel.scrollLeft >= maxScroll - 5) {
                 isResetting = true;
-                // Salto instantáneo e invisible al inicio sin romper el gesto táctil
                 talksCarousel.scrollTo({ left: 0, behavior: 'instant' });
                 setTimeout(() => { isResetting = false; }, 50);
             }
