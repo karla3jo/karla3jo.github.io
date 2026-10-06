@@ -422,6 +422,10 @@
         }
 
     /* --- Carousel / Slider Styles --- */
+        #talks {
+            min-height: 60vh; /* Asegura espacio vertical para que ScrollSpy no active la siguiente sección */
+        }
+
         .carousel-container {
             position: relative;
             display: flex;
@@ -445,7 +449,7 @@
         }
 
         .carousel-card {
-            flex: 0 0 320px; /* Ancho fijo para cada tarjeta en el slider */
+            flex: 0 0 380px; /* Tarjeta más ancha (antes 320px) */
             scroll-snap-align: start;
         }
 
@@ -478,15 +482,10 @@
         .carousel-btn.prev { left: -20px; }
         .carousel-btn.next { right: -20px; }
 
-        @media (max-width: 768px) {
-            .carousel-btn { display: none; } /* En móviles se desliza intuitivamente con el dedo */
-            .carousel-card { flex: 0 0 280px; }
-        }
-
         /* Ajuste de contenedor e imagen para el carrusel de charlas */
         .talk-image-wrapper {
             width: 100%;
-            height: 160px; /* Altura fija elegante para todas las tarjetas */
+            height: 220px; /* Imagen más alta y vistosa (antes 160px) */
             overflow: hidden;
             position: relative;
             background-color: #0f172a;
@@ -495,11 +494,18 @@
 
         .talk-image-wrapper img {
             width: 100%;
-            height: 100% !important; /* Fuerza a la imagen a no salirse del contenedor */
-            object-fit: cover !important; /* Recorta suavemente la foto para que no se deforme */
-            object-position: center !important; /* Centra la parte principal de la foto */
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center !important;
             opacity: 0.9;
             transition: transform 0.5s ease, opacity 0.3s ease;
+        }
+
+        /* Adaptación para pantallas móviles */
+        @media (max-width: 768px) {
+            .carousel-btn { display: none; } /* En móviles se desliza con el dedo */
+            .carousel-card { flex: 0 0 310px; }
+            .talk-image-wrapper { height: 180px; }
         }
     </style>
 </head>
@@ -1101,7 +1107,7 @@
         // 1. Navegación manual por botones (Escritorio / Flechas)
         function scrollCarousel(direction) {
             const carousel = document.getElementById('talksCarousel');
-            const scrollAmount = 340; // Ancho de tarjeta + gap
+            const scrollAmount = 400; // Ancho de tarjeta + gap
             const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
 
             if (direction === 1) {
