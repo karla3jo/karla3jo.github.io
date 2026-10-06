@@ -481,6 +481,25 @@
             .carousel-btn { display: none; } /* En móviles se desliza intuitivamente con el dedo */
             .carousel-card { flex: 0 0 280px; }
         }
+
+        /* Ajuste de contenedor e imagen para el carrusel de charlas */
+        .talk-image-wrapper {
+            width: 100%;
+            height: 160px; /* Altura fija elegante para todas las tarjetas */
+            overflow: hidden;
+            position: relative;
+            background-color: #0f172a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .talk-image-wrapper img {
+            width: 100%;
+            height: 100% !important; /* Fuerza a la imagen a no salirse del contenedor */
+            object-fit: cover !important; /* Recorta suavemente la foto para que no se deforme */
+            object-position: center !important; /* Centra la parte principal de la foto */
+            opacity: 0.9;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -924,7 +943,6 @@
                     </div>
                 </a>
 
-                <!-- Repite la clase "carousel-card" en las otras 6 tarjetas aquí... -->
                 <!-- CIITA 2026 -->
                 <a href="TU_LINK_O_YOUTUBE_AQUI" target="_blank" class="talk-card carousel-card" style="text-decoration: none; color: inherit; cursor: pointer;">
                     <div class="talk-image-wrapper">
