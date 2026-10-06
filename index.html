@@ -1108,42 +1108,49 @@
         let isButtonScrolling = false;
         let isAdjusting = false;
 
-        // 1. Navegación manual por botones (Flechas en Escritorio)
         function scrollCarousel(direction) {
             const scrollAmount = 400; // 380px tarjeta + gap
             const maxScrollLeft = talksCarousel.scrollWidth - talksCarousel.clientWidth;
 
-            // Bloqueamos temporalmente el evento táctil para que no interfiera en la animación
             isButtonScrolling = true;
 
             if (direction === 1) {
-                if (talksCarousel.scrollLeft >= maxScrollLeft - 15) {
+                // AVANZAR A LA DERECHA
+                if (talksCarousel.scrollLeft >= maxScrollLeft - 20) {
+                    // Salto del final al inicio: deshabilitamos snap un instante
+                    talksCarousel.style.scrollSnapType = 'none';
                     talksCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+                    setTimeout(() => {
+                        talksCarousel.style.scrollSnapType = 'x mandatory';
+                    }, 500);
                 } else {
                     talksCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 }
             } else if (direction === -1) {
-                if (talksCarousel.scrollLeft <= 15) {
+                // RETROCEDER A LA IZQUIERDA
+                if (talksCarousel.scrollLeft <= 20) {
+                    // Salto del inicio al final: deshabilitamos snap para evitar el "atrapado"
+                    talksCarousel.style.scrollSnapType = 'none';
                     talksCarousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+                    setTimeout(() => {
+                        talksCarousel.style.scrollSnapType = 'x mandatory';
+                    }, 500);
                 } else {
                     talksCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 }
             }
 
-            // Volvemos a activar la detección tras finalizar la transición suave
             setTimeout(() => {
                 isButtonScrolling = false;
             }, 600);
         }
 
-        // 2. Detección de Swipe Táctil (Móvil)
+        // Detección de Swipe Táctil (Móvil)
         talksCarousel.addEventListener('scroll', () => {
-            // Si el scroll lo originó una flecha o ya se está ajustando, no hacemos nada
             if (isButtonScrolling || isAdjusting) return;
 
             const maxScroll = talksCarousel.scrollWidth - talksCarousel.clientWidth;
 
-            // Bucle infinito solo cuando se arrastra con el dedo en móviles
             if (talksCarousel.scrollLeft >= maxScroll - 5) {
                 isAdjusting = true;
                 setTimeout(() => {
