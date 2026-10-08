@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1314fb4e-af76-4b0b-bab6-d03cac6cf709"></script> /* Umami Cloud Tracking Code */
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1314fb4e-af76-4b0b-bab6-d03cac6cf709"></script> <!-- Umami Cloud Tracking Code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karla Trejo, PhD | AI & Robotics Portfolio</title>
@@ -499,6 +499,43 @@
             opacity: 0.9;
             transition: transform 0.5s ease, opacity 0.3s ease;
         }
+
+        /* Talk cards (items del carrusel) de Claude */
+        .talk-card {
+            display: block;
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .talk-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
+        }
+        .talk-card:hover .talk-image-wrapper img { transform: scale(1.04); opacity: 1; }
+        .talk-content { padding: 1.25rem 1.5rem 1.5rem; }
+        .talk-badge {
+            display: inline-block;
+            background-color: rgba(129, 140, 248, 0.15);
+            color: var(--secondary-color);
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .talk-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+        .talk-meta i { margin-right: 0.35rem; }
+                
 
         /* Adaptación para pantallas móviles */
         @media (max-width: 768px) {
@@ -1101,78 +1138,68 @@
         });
     </script>
 
-    <!-- Carrousel Arrows Click JavaScript -->
+    <!-- Carousel infinite loop JavaScript -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const carousel = document.getElementById('talksCarousel');
-            const cards = Array.from(carousel.querySelectorAll('.carousel-card'));
-            
-            // 1. JS crea los clones automáticamente para el bucle infinito
-            const firstClone = cards[0].cloneNode(true);
-            const lastClone = cards[cards.length - 1].cloneNode(true);
-            
-            carousel.insertBefore(lastClone, cards[0]);
-            carousel.appendChild(firstClone);
+            const originals = Array.from(carousel.querySelectorAll('.carousel-card'));
+            const N = originals.length;
+            if (!N) return;
 
-            let step;
-            function updateMeasurements() {
-                const gap = parseFloat(window.getComputedStyle(carousel).gap) || 0;
-                step = cards[0].offsetWidth + gap;
-            }
+            // Clonamos el set COMPLETO a cada lado: [clones][originales][clones]
+            const makeClone = (card) => {
+                const c = card.cloneNode(true);
+                c.setAttribute('aria-hidden', 'true');
+                c.tabIndex = -1;
+                return c;
+            };
+            originals.forEach(card => carousel.insertBefore(makeClone(card), originals[0]));
+            originals.forEach(card => carousel.appendChild(makeClone(card)));
 
-            // 2. Colocar el carrusel en la primera tarjeta real al cargar
-            setTimeout(() => {
-                carousel.style.scrollSnapType = 'none';
-                updateMeasurements();
-                carousel.scrollLeft = step;
-                setTimeout(() => { carousel.style.scrollSnapType = 'x mandatory'; }, 50);
-            }, 100);
+            let step = 0;      // distancia entre tarjetas (ancho + gap)
+            let setWidth = 0;  // ancho de un set completo de tarjetas
 
-            // 3. Lógica del Bucle Infinito (Invisible y sin tirones)
-            let isJumping = false;
-            let scrollTimeout;
+            const measure = () => {
+                const cards = carousel.children;
+                step = cards[1].offsetLeft - cards[0].offsetLeft;
+                setWidth = cards[N].offsetLeft - cards[0].offsetLeft;
+            };
+            const jumpTo = (x) => carousel.scrollTo({ left: x, behavior: 'instant' });
 
+            // Posición inicial: primera tarjeta real
+            measure();
+            jumpTo(setWidth);
+
+            // Al detenerse el scroll, si estamos en zona de clones saltamos exactamente un set
+            let timer;
             carousel.addEventListener('scroll', () => {
-                if (isJumping) return;
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    const x = carousel.scrollLeft;
+                    if (x < setWidth - 2) jumpTo(x + setWidth);
+                    else if (x >= 2 * setWidth - 2) jumpTo(x - setWidth);
+                }, 120);
+            }, { passive: true });
 
-                clearTimeout(scrollTimeout);
-                
-                // Esperamos 150ms a que la tarjeta se detenga por completo antes de resetear
-                scrollTimeout = setTimeout(() => {
-                    updateMeasurements();
-                    const currentScroll = carousel.scrollLeft;
-                    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-
-                    // Si retrocedemos al principio (Clon de la izquierda)
-                    if (currentScroll <= 10) {
-                        isJumping = true;
-                        carousel.style.scrollSnapType = 'none';
-                        carousel.scrollTo({ left: maxScroll - step, behavior: 'instant' });
-                        setTimeout(() => { 
-                            carousel.style.scrollSnapType = 'x mandatory';
-                            isJumping = false; 
-                        }, 50);
-                    } 
-                    // Si avanzamos al final (Clon de la derecha)
-                    else if (currentScroll >= maxScroll - 10) {
-                        isJumping = true;
-                        carousel.style.scrollSnapType = 'none';
-                        carousel.scrollTo({ left: step, behavior: 'instant' });
-                        setTimeout(() => { 
-                            carousel.style.scrollSnapType = 'x mandatory';
-                            isJumping = false; 
-                        }, 50);
-                    }
+            // Al redimensionar, recalculamos conservando la tarjeta actual
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    const idx = step ? Math.round(carousel.scrollLeft / step) : N;
+                    measure();
+                    jumpTo(idx * step);
                 }, 150);
             });
 
-            // 4. Lógica de las Flechas (Escritorio)
-            window.scrollCarousel = function(direction) {
-                updateMeasurements();
-                // Aquí aplicamos la transición suave manualmente sin romper el CSS
+            // Flechas (escritorio)
+            window.scrollCarousel = function (direction) {
+                if (!step) measure();
                 carousel.scrollBy({ left: direction * step, behavior: 'smooth' });
             };
         });
     </script>
+</body>
+</html>
 </body>
 </html>
