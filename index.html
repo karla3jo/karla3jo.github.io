@@ -23,6 +23,9 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
@@ -89,6 +92,7 @@
         /* Hero Section */
         header {
             min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             align-items: center;
             max-width: 1200px;
@@ -171,11 +175,13 @@
             font-weight: 500;
         }
 
-        .btn:hover {
-            border-color: var(--hover-color) !important;
-            background-color: rgba(255, 255, 255, 0.02);
-            box-shadow: 0 0 15px var(--shadow-color);
-            transform: translateY(-2px);
+        @media (hover: hover) {
+            .btn:hover {
+                border-color: var(--hover-color) !important;
+                background-color: rgba(255, 255, 255, 0.02);
+                box-shadow: 0 0 15px var(--shadow-color);
+                transform: translateY(-2px);
+            }
         }
 
         .btn-primary {
@@ -184,9 +190,11 @@
             border: none;
         }
 
-        .btn-primary:hover {
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-            transform: translateY(-2px);
+        @media (hover: hover) {
+            .btn-primary:hover {
+                box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+                transform: translateY(-2px);
+            }
         }
 
         /* Main Sections Layout */
@@ -231,10 +239,12 @@
             transition: transform 0.3s, border-color 0.3s;
         }
 
-        .card:hover:not(div) {
-            transform: translateY(-4px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
+        @media (hover: hover) {
+            .card:hover:not(div) {
+                transform: translateY(-4px);
+                border-color: rgba(56, 189, 248, 0.3);
+                box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
+            }
         }
 
         .card-header {
@@ -335,10 +345,12 @@
         }
 
         /* Solo reaccionan las cajas compactas que tienen enlace */
-        .award-item:hover:not(div) {
-            transform: translateY(-4px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
+        @media (hover: hover) {
+            .award-item:hover:not(div) {
+                transform: translateY(-4px);
+                border-color: rgba(56, 189, 248, 0.3);
+                box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
+            }
         }
 
         /* Bloquea el cursor en la tarjeta estática */
@@ -460,8 +472,8 @@
             scroll-snap-type: x mandatory;
             padding: 1rem 0.5rem;
             -webkit-overflow-scrolling: touch;
-            /* Ocultar barra de scroll para un acabado limpio */
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
+            overscroll-behavior-x: contain;
         }
 
         .talks-carousel::-webkit-scrollbar {
@@ -493,10 +505,12 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .carousel-btn:hover {
-            background: var(--primary-color);
-            color: #0f172a;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        @media (hover: hover) {
+            .carousel-btn:hover {
+                background: var(--primary-color);
+                color: #0f172a;
+                box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            }
         }
 
         .carousel-btn.prev { left: -20px; }
@@ -530,12 +544,17 @@
             overflow: hidden;
             transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
-        .talk-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
+        @media (hover: hover) {
+            .talk-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(56, 189, 248, 0.3);
+                box-shadow: 0 4px 20px rgba(56, 189, 248, 0.08);
+            }
+            .talk-card:hover .talk-image-wrapper img { 
+                transform: scale(1.04); 
+                opacity: 1; 
+            }
         }
-        .talk-card:hover .talk-image-wrapper img { transform: scale(1.04); opacity: 1; }
         .talk-content { padding: 1.25rem 1.5rem 1.5rem; }
         .talk-badge {
             display: inline-block;
@@ -563,6 +582,11 @@
             .carousel-btn { display: none; } /* En móviles se desliza con el dedo */
             .carousel-card { flex: 0 0 310px; }
             .talk-image-wrapper { height: 180px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { transition: none !important; }
         }
     </style>
 </head>
