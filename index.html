@@ -93,7 +93,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 6rem 2rem 2rem 2rem;
+            padding: calc(var(--nav-height) + 1.5rem) 2rem 2rem 2rem;
         }
 
         .hero-container {
@@ -1135,8 +1135,21 @@
         window.addEventListener('load', setNavHeight);
         window.addEventListener('resize', setNavHeight);
 
+        let lastActiveId = null;
         const setActive = (id) => {
+            if (id === lastActiveId) return;   // nada que hacer si no cambió
+            lastActiveId = id;
+        
             navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        
+            const navList = document.querySelector('.nav-links');
+            const act = navList.querySelector('a.active');
+            if (act && navList.scrollWidth > navList.clientWidth) {
+                navList.scrollTo({
+                    left: act.offsetLeft - (navList.clientWidth - act.offsetWidth) / 2,
+                    behavior: 'smooth'
+                });
+            }
         };
 
         function updateSpy() {
